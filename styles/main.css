@@ -35,6 +35,8 @@
   font-family: "ThePeakFontBeta_V0_101", "SentyCreek";
 }
 
+.pinyin-textbox input[type='submit'] { display: none; }
+
 input[type=text] {
   -webkit-appearance: none;
      -moz-appearance: none;
