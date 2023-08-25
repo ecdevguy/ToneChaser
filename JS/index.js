@@ -1,4 +1,4 @@
-import myJson from './vocabulary/TOCFL-1.json' assert {type: 'json'};
+import myJson from 'vocabulary/TOCFL-1.json' assert {type: 'json'};
 
 let errors = 0;
 
