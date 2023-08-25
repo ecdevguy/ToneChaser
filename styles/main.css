@@ -1,5 +1,5 @@
-@import '/styles/reset.css';
-@import '/styles/fonts.css';
+@import './styles/reset.css';
+@import './styles/fonts.css';
 .correct {
   background: rgb(216, 214, 248);
   background: radial-gradient(circle, rgb(196, 192, 255) 0%, rgb(255, 255, 255) 0%, rgba(72, 186, 221, 0.6) 100%);
