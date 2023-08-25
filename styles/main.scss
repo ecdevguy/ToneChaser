@@ -1,0 +1,82 @@
+@import '/styles/reset.css';
+@import '/styles/fonts.css';
+
+.correct {
+  background: rgb(216, 214, 248);
+  background: radial-gradient(circle, rgba(196,192,255,1) 0%, rgba(255,255,255,1) 0%, rgba(72, 186, 221, 0.6) 100%);
+}
+
+.incorrect {
+  background: rgb(216, 214, 248);
+  background: radial-gradient(circle, rgba(196,192,255,1) 0%, rgba(255,255,255,1) 0%, rgba(246, 38, 38, 0.578) 100%);
+}
+
+.container {
+  display: grid;
+  margin: 5rem;
+  place-content: center;
+  row-gap: 2rem;
+}
+
+.word {
+  user-select: none;
+}
+
+.character {
+  display: grid;
+  width: 220px;
+  height: 220px;
+  border-width: 3px;
+  border-style: solid;
+  justify-items: center;
+  align-items: center;
+  font-size: 4rem;
+  font-family: 'ThePeakFontBeta_V0_101', 'SentyCreek';
+}
+
+input[type=text] {
+	appearance: none;
+	border: none;
+	outline: none;
+	border-bottom: .2em solid #73bdc293;
+	background: rgba(#a5b9b7, .2);
+	border-radius: .2em .2em 0 0;
+	padding: .4em;
+	color: #000000;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  width: 100%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  background-color: rgba(121, 161, 167, 0.13);
+  font-family: 'Manrope', sans-serif;
+  text-align: center;
+  padding: .8rem;
+  border-radius: .2rem;
+  color: rgb(103, 103, 103);
+  border: solid;
+  border-color: rgba(55, 124, 119, 0.375);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100%;
+  background-color: rgba(83, 147, 149, 0.178);
+  border: solid;
+  border-color: #3b423b49;
+  color: #575757b4;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 0%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
