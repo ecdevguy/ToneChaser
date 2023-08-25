@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'SentyCreek';
-  src: url('fonts/SentyCreek.ttf') 
+  src: url('./fonts/SentyCreek.ttf') 
        format('truetype');
 }
 
 @font-face {
   font-family: 'ThePeakFontBeta_V0_101';
-  src: url('fonts/ThePeakFontBeta_V0_101.ttf') 
+  src: url('./fonts/ThePeakFontBeta_V0_101.ttf') 
        format('truetype');
 }
