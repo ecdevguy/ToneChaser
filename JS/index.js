@@ -6,10 +6,16 @@ function adjustFontSize() {
   $('#chinese-character').each(function() {
     const charCount = $(this).text().trim().length;
     
-    if (charCount > 3) {
-      $(this).css('font-size', '2.5rem');
-    } else if (charCount <= 3) {
+    if (charCount === 1) {
+      $(this).css('font-size', '6rem');
+    } else if (charCount === 2) {
+      $(this).css('font-size', '5rem');
+    } else if (charCount === 3) {
       $(this).css('font-size', '4rem');
+    } else if (charCount === 4) {
+      $(this).css('font-size', '3rem');
+    } else if (charCount >= 5) {
+      $(this).css('font-size', '2.5rem');
     }
   });
 }
@@ -37,13 +43,13 @@ $('.pinyin-textbox').keypress((e) => {
     
     $("#body").attr("class", "correct");
     $("#definition").text(myJson[x]['First Translation']);
-    adjustFontSize();
+    //adjustFontSize();
     let errors = 0;
 }
 else if (e.which === 13 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
-  adjustFontSize();
+  //adjustFontSize();
   errors++;
 }
 else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin-character").val())) {
@@ -57,20 +63,21 @@ else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin
     
     $("#body").attr("class", "correct");
     $("#definition").text(myJson[x]['First Translation']);
-    adjustFontSize();
+    //adjustFontSize();
     let errors = 0;
 }
 else if (e.which === 36 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
-  adjustFontSize();
+  //adjustFontSize();
   errors++;
 }
 else if (errors == 7){
   $("#pinyin-character").val("");
   $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
-  adjustFontSize();
+  //adjustFontSize();
   errors = 4;
 }
+adjustFontSize();
 })
 
