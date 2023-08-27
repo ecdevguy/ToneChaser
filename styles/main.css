@@ -1,5 +1,5 @@
-@import 'reset.css';
-@import 'fonts.css';
+@import '/styles/reset.css';
+@import '/styles/fonts.css';
 .corner-button {
   font-family: "Lato", sans-serif;
   letter-spacing: 0.3rem;
@@ -13,6 +13,9 @@
   transition: color 0.2s;
   z-index: 1;
   display: inline-block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .corner-button:hover::before {
   width: 0;
@@ -100,6 +103,9 @@ input[type=text] {
   font-family: "Manrope", sans-serif;
   width: 100%;
   pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .tooltip {
@@ -113,6 +119,9 @@ input[type=text] {
   color: rgba(103, 103, 103, 0.721);
   border: solid;
   border-color: rgba(115, 189, 194, 0.5764705882);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .tooltip .tooltiptext {
@@ -129,6 +138,9 @@ input[type=text] {
   z-index: 1;
   top: 150%;
   left: 0%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .tooltip:hover .tooltiptext {
