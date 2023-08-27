@@ -1,13 +1,56 @@
 @import '/styles/reset.css';
 @import '/styles/fonts.css';
+.corner-button {
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.3rem;
+  cursor: pointer;
+  background: transparent;
+  border: 0.2rem solid currentColor;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.6549019608);
+  position: relative;
+  transition: color 0.2s;
+  z-index: 1;
+  display: inline-block;
+}
+.corner-button:hover::before {
+  width: 0;
+}
+.corner-button:hover::after {
+  height: 0;
+}
+.corner-button:active {
+  color: #ddfffc;
+}
+.corner-button::before, .corner-button::after {
+  content: "";
+  position: absolute;
+  background: #ddfffc;
+  z-index: -1;
+  transition: all 0.2s;
+}
+.corner-button::before {
+  width: calc(100% - 4rem);
+  height: calc(101% + 0.4rem);
+  top: -0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.corner-button::after {
+  height: calc(100% - 4rem);
+  width: calc(101% + 0.4rem);
+  left: -0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .correct {
-  background: rgb(216, 214, 248);
-  background: radial-gradient(circle, rgb(196, 192, 255) 0%, rgb(255, 255, 255) 0%, rgba(72, 186, 221, 0.6) 100%);
+  background: #ddfffc;
 }
 
 .incorrect {
-  background: rgb(216, 214, 248);
-  background: radial-gradient(circle, rgb(196, 192, 255) 0%, rgb(255, 255, 255) 0%, rgba(246, 38, 38, 0.578) 100%);
+  background: #f9a8a8;
 }
 
 .container {
@@ -21,6 +64,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  display: none;
 }
 
 .character {
@@ -34,6 +78,7 @@
   text-align: center;
   font-size: 4rem;
   font-family: "ThePeakFontBeta_V0_101", "SentyCreek";
+  background-color: #dffcfa;
 }
 
 .pinyin-textbox input[type=submit] {
@@ -54,6 +99,7 @@ input[type=text] {
   text-align: center;
   font-family: "Manrope", sans-serif;
   width: 100%;
+  pointer-events: none;
 }
 
 .tooltip {
@@ -64,9 +110,9 @@ input[type=text] {
   text-align: center;
   padding: 0.8rem;
   border-radius: 0.2rem;
-  color: rgb(103, 103, 103);
+  color: rgba(103, 103, 103, 0.721);
   border: solid;
-  border-color: rgba(55, 124, 119, 0.375);
+  border-color: rgba(115, 189, 194, 0.5764705882);
 }
 
 .tooltip .tooltiptext {
