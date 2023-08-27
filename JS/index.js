@@ -1,6 +1,7 @@
 import myJson from '../vocabulary/TOCFL-1.json' assert {type: 'json'};
 
 let errors = 0;
+const charCount = 135;
 
 function adjustFontSize() {
   $('#chinese-character').each(function() {
@@ -21,9 +22,21 @@ function adjustFontSize() {
 }
 
 $(document).ready(() => {
+
   
-  
-  adjustFontSize();
+  $('#start-button').on("click", () => {
+    $('.corner-button').css('display', 'none');
+    $('.word').css('display', 'inline-block');
+    $('input[type=text]').css('pointer-events', 'all');
+    $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
+  });
+  let x = Math.floor((Math.random() * charCount));
+  $("#chinese-character").text(myJson[x].Word);
+  $("#chinese-character").attr("pinyin", myJson[x].OtherPinyin);
+  $("#chinese-character").attr("character", myJson[x].Word);
+  $("#definition").text(myJson[x]['First Translation']);
+
+adjustFontSize();
   
 
   $('.pinyin-textbox').on('submit', () => {
@@ -34,7 +47,7 @@ $('.pinyin-textbox').keypress((e) => {
   
   if (e.which === 13 && ($("#chinese-character").attr("pinyin") == $("#pinyin-character").val())) {
       
-    let x = Math.floor((Math.random() * 135));
+    let x = Math.floor((Math.random() * charCount));
     $("#chinese-character").text(myJson[x].Word);
     $("#chinese-character").attr("pinyin", myJson[x].OtherPinyin)
     $("#chinese-character").attr("character", myJson[x].Word)
@@ -43,18 +56,24 @@ $('.pinyin-textbox').keypress((e) => {
     
     $("#body").attr("class", "correct");
     $("#definition").text(myJson[x]['First Translation']);
+    $('.character').css('background-color', '#dffcfa');
+    $('.tooltip').css('border-color', '#73bdc293');
+    $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
     //adjustFontSize();
     let errors = 0;
 }
 else if (e.which === 13 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
+  $('.character').css('background-color', '#f3b2b2');
+  $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
+  $('.tooltip').css('border-color', '#c2787359');
   //adjustFontSize();
   errors++;
 }
 else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin-character").val())) {
       
-    let x = Math.floor((Math.random() * 135));
+    let x = Math.floor((Math.random() * charCount));
     $("#chinese-character").text(myJson[x].Word);
     $("#chinese-character").attr("pinyin", myJson[x].OtherPinyin)
     $("#chinese-character").attr("character", myJson[x].Word)
@@ -63,12 +82,18 @@ else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin
     
     $("#body").attr("class", "correct");
     $("#definition").text(myJson[x]['First Translation']);
+    $('.character').css('background-color', '#dffcfa');
+    $('.tooltip').css('border-color', '#73bdc293');
+    $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
     //adjustFontSize();
     let errors = 0;
 }
 else if (e.which === 36 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
+  $('.character').css('background-color', '#f3b2b2');
+  $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
+  $('.tooltip').css('border-color', '#c2787359');
   //adjustFontSize();
   errors++;
 }

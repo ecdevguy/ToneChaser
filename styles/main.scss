@@ -1,14 +1,69 @@
 @import '/styles/reset.css';
 @import '/styles/fonts.css';
 
+
+$start-btn-clr: #000000a7;
+$border-width: .2rem;
+$corner-size: 4rem;
+$dur: .2s;
+$primaryCorrect: #ddfffc;
+$primaryCorrectLighter: #dffcfa;
+$accentCorrect: #EBDDFF;
+$primaryIncorrect: #f9a8a8;
+$accentIncorrect: #f3b2b2;
+.corner-button {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.3rem;
+  cursor: pointer;
+  background: transparent;
+  border: $border-width solid currentColor;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  color: $start-btn-clr;
+  position: relative;
+  transition: color $dur;
+  z-index: 1;
+  display: inline-block;
+  
+  &:hover {
+    
+    &::before { width: 0; }
+    &::after { height: 0; }
+  }
+  &:active {
+    color: $primaryCorrect;
+  }
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background: $primaryCorrect;
+    z-index: -1;
+    transition: all $dur;
+  }
+  //the 101% is because of a pixel rounding issue in firefox
+  &::before {
+    width: calc(100% - #{$corner-size});
+    height: calc(101% + #{$border-width * 2});
+    top: -$border-width;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    height: calc(100% - #{$corner-size});
+    width: calc(101% + #{$border-width * 2});
+    left: -$border-width;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 .correct {
-  background: rgb(216, 214, 248);
-  background: radial-gradient(circle, rgba(196,192,255,1) 0%, rgba(255,255,255,1) 0%, rgba(72, 186, 221, 0.6) 100%);
+  background: $primaryCorrect;
 }
 
 .incorrect {
-  background: rgb(216, 214, 248);
-  background: radial-gradient(circle, rgba(196,192,255,1) 0%, rgba(255,255,255,1) 0%, rgba(246, 38, 38, 0.578) 100%);
+  background: $primaryIncorrect;
 }
 
 .container {
@@ -20,6 +75,7 @@
 
 .word {
   user-select: none;
+  display: none;
 }
 
 .character {
@@ -33,6 +89,7 @@
   text-align: center;
   font-size: 4rem;
   font-family: 'ThePeakFontBeta_V0_101', 'SentyCreek';
+  background-color: $primaryCorrectLighter;
 }
 
 .pinyin-textbox input[type=submit] { display: none; }
@@ -49,7 +106,10 @@ input[type=text] {
   text-align: center;
   font-family: 'Manrope', sans-serif;
   width: 100%;
+  pointer-events: none;
 }
+
+
 
 .tooltip {
   position: relative;
@@ -59,9 +119,9 @@ input[type=text] {
   text-align: center;
   padding: .8rem;
   border-radius: .2rem;
-  color: rgb(103, 103, 103);
+  color: rgba(103, 103, 103, 0.721);
   border: solid;
-  border-color: rgba(55, 124, 119, 0.375);
+  border-color: #73bdc293;
 }
 
 .tooltip .tooltiptext {
@@ -83,3 +143,5 @@ input[type=text] {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+
