@@ -64,12 +64,12 @@ $accentIncorrect: #fae7e7;
 }
 
 .incorrect {
-  background: rgb(232, 243, 255);
+  background: rgb(202,226,255);
 }
 
 .container {
   display: grid;
-  margin: 7rem;
+  margin: 8rem;
   place-content: center;
   row-gap: 2rem;
 }
