@@ -65,7 +65,7 @@ $('.pinyin-textbox').keypress((e) => {
 else if (e.which === 13 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
-  $('.character').css('background-color', '#f3b2b2');
+  $('.character').css('background-color', '#f8eeee');
   $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
   $('.tooltip').css('border-color', '#c2787359');
   //adjustFontSize();
@@ -91,7 +91,7 @@ else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin
 else if (e.which === 36 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
-  $('.character').css('background-color', '#f3b2b2');
+  $('.character').css('background-color', '#f8eeee');
   $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
   $('.tooltip').css('border-color', '#c2787359');
   //adjustFontSize();

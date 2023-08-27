@@ -6,11 +6,12 @@ $start-btn-clr: #000000a7;
 $border-width: .2rem;
 $corner-size: 4rem;
 $dur: .2s;
-$primaryCorrect: #ddfffc;
-$primaryCorrectLighter: #dffcfa;
+$primaryCorrect: #effbfa;
+$primaryCorrectLighter: #e1f8f6;
 $accentCorrect: #EBDDFF;
-$primaryIncorrect: #f9a8a8;
-$accentIncorrect: #f3b2b2;
+$primaryIncorrect: #effbfa;
+$accentIncorrect: #fae7e7;
+
 .corner-button {
   font-family: 'Lato', sans-serif;
   letter-spacing: 0.3rem;
@@ -31,13 +32,13 @@ $accentIncorrect: #f3b2b2;
     &::after { height: 0; }
   }
   &:active {
-    color: $primaryCorrect;
+    color: $primaryCorrectLighter;
   }
   
   &::before, &::after {
     content: '';
     position: absolute;
-    background: $primaryCorrect;
+    background: $primaryCorrectLighter;
     z-index: -1;
     transition: all $dur;
   }
@@ -59,16 +60,16 @@ $accentIncorrect: #f3b2b2;
 }
 
 .correct {
-  background: $primaryCorrect;
+  background: rgb(202,226,255);
 }
 
 .incorrect {
-  background: $primaryIncorrect;
+  background: rgb(232, 243, 255);
 }
 
 .container {
   display: grid;
-  margin: 5rem;
+  margin: 7rem;
   place-content: center;
   row-gap: 2rem;
 }
