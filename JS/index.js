@@ -56,7 +56,7 @@ $('.pinyin-textbox').keypress((e) => {
     
     $("#body").attr("class", "correct");
     $("#definition").text(myJson[x]['First Translation']);
-    $('.character').css('background-color', '#dffcfa');
+    //$('.character').css('background-color', '#dffcfa');
     $('.tooltip').css('border-color', '#73bdc293');
     $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
     //adjustFontSize();
@@ -65,9 +65,10 @@ $('.pinyin-textbox').keypress((e) => {
 else if (e.which === 13 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
-  $('.character').css('background-color', '#f3b2b2');
+  //$('.character').css('background-color', '#f8eeee');
   $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
   $('.tooltip').css('border-color', '#c2787359');
+  $('#chinese-character').effect('shake', 300);
   //adjustFontSize();
   errors++;
 }
@@ -82,7 +83,7 @@ else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin
     
     $("#body").attr("class", "correct");
     $("#definition").text(myJson[x]['First Translation']);
-    $('.character').css('background-color', '#dffcfa');
+    //$('.character').css('background-color', '#dffcfa');
     $('.tooltip').css('border-color', '#73bdc293');
     $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
     //adjustFontSize();
@@ -91,7 +92,7 @@ else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin
 else if (e.which === 36 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
   $("#pinyin-character").val("");
   $("#body").attr("class", "incorrect");
-  $('.character').css('background-color', '#f3b2b2');
+  //$('.character').css('background-color', '#f8eeee');
   $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
   $('.tooltip').css('border-color', '#c2787359');
   //adjustFontSize();

@@ -24,12 +24,12 @@
   height: 0;
 }
 .corner-button:active {
-  color: #ddfffc;
+  color: #e1f8f6;
 }
 .corner-button::before, .corner-button::after {
   content: "";
   position: absolute;
-  background: #ddfffc;
+  background: #e1f8f6;
   z-index: -1;
   transition: all 0.2s;
 }
@@ -49,16 +49,16 @@
 }
 
 .correct {
-  background: #ddfffc;
+  background: rgb(202, 226, 255);
 }
 
 .incorrect {
-  background: #f9a8a8;
+  background: rgb(202, 226, 255);
 }
 
 .container {
   display: grid;
-  margin: 5rem;
+  margin: 8rem;
   place-content: center;
   row-gap: 2rem;
 }
@@ -81,7 +81,7 @@
   text-align: center;
   font-size: 4rem;
   font-family: "ThePeakFontBeta_V0_101", "SentyCreek";
-  background-color: #dffcfa;
+  background-color: #e1f8f6;
 }
 
 .pinyin-textbox input[type=submit] {
