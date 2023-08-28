@@ -404,7 +404,7 @@
    "Pinyin": "diǎn",
    "OtherPinyin": "dian3",
    "Level": 1,
-   "First Translation": "point",
+   "First Translation": "point, o'clock",
    "Other Translations": "dot, drop, speck, o'clock, point (in space or time), to draw a dot, to check on a list, to choose, to order (food in a restaurant), to touch briefly, to hint, to light, to ignite, to pour a liquid drop by drop, (old) one fifth of a two-hour watch 更[geng1], dot stroke in Chinese characters, classifier for items"
  },
  {
@@ -412,7 +412,7 @@
    "Pinyin": "ge",
    "OtherPinyin": "ge5",
    "Level": 1,
-   "First Translation": "individual",
+   "First Translation": "individual, classifier for people or objects in general",
    "Other Translations": "this, that, size, classifier for people or objects in general"
  },
  {
@@ -428,7 +428,7 @@
    "Pinyin": "zhù",
    "OtherPinyin": "zhu4",
    "Level": 1,
-   "First Translation": "to live",
+   "First Translation": "to live, to dwell, to stay, to reside",
    "Other Translations": "to dwell, to stay, to reside, to stop, (suffix indicating firmness, steadiness, or coming to a halt)"
  },
  {
@@ -436,7 +436,7 @@
    "Pinyin": "lái",
    "OtherPinyin": "lai2",
    "Level": 1,
-   "First Translation": "to come",
+   "First Translation": "to come, to arrive",
    "Other Translations": "to arrive, to come round, ever since, next"
  },
  {
@@ -508,7 +508,7 @@
    "Pinyin": "hěn",
    "OtherPinyin": "hen3",
    "Level": 1,
-   "First Translation": "(adverb of degree)",
+   "First Translation": "(adverb of degree), very",
    "Other Translations": "quite, very, awfully"
  },
  {
@@ -564,8 +564,8 @@
    "Pinyin": "dàxué",
    "OtherPinyin": "da4xue2",
    "Level": 1,
-   "First Translation": "the Great Learning, one of the Four Books 四書|四书[Si4 shu1] in Confucianism",
-   "Other Translations": "university, college, CL:所[suo3]"
+   "First Translation": "university, college, CL:所[suo3]the Great Learning, one of the Four Books 四書|四书[Si4 shu1] in Confucianism",
+   "Other Translations": "the Great Learning, one of the Four Books 四書|四书[Si4 shu1] in Confucianism"
  },
  {
    "Word": "學校",
@@ -580,7 +580,7 @@
    "Pinyin": "bǐ",
    "OtherPinyin": "bi3",
    "Level": 1,
-   "First Translation": "pen",
+   "First Translation": "pen, CL:支[zhi1],枝[zhi1]",
    "Other Translations": "pencil, writing brush, to write or compose, the strokes of Chinese characters, classifier for sums of money, deals, CL:支[zhi1],枝[zhi1]"
  },
  {
@@ -596,7 +596,7 @@
    "Pinyin": "shuō",
    "OtherPinyin": "shuo1",
    "Level": 1,
-   "First Translation": "to persuade",
+   "First Translation": "to persuade, to speak",
    "Other Translations": "to speak, to say, to explain, to scold, to tell off, a theory (typically the last character in a compound, as in 日心說|日心说 heliocentric theory)"
  },
  {
@@ -660,7 +660,7 @@
    "Pinyin": "diànshì",
    "OtherPinyin": "dian4shi4",
    "Level": 1,
-   "First Translation": "television",
+   "First Translation": "television, CL:臺|台[tai2],個|个[ge4]",
    "Other Translations": "TV, CL:臺|台[tai2],個|个[ge4]"
  },
  {
@@ -692,7 +692,7 @@
    "Pinyin": "diànyǐng",
    "OtherPinyin": "dian4ying3",
    "Level": 1,
-   "First Translation": "movie",
+   "First Translation": "movie, CL:部[bu4],片[pian4],幕[mu4],場|场[chang3]",
    "Other Translations": "film, CL:部[bu4],片[pian4],幕[mu4],場|场[chang3]"
  },
  {
@@ -724,7 +724,7 @@
    "Pinyin": "děng",
    "OtherPinyin": "deng3",
    "Level": 1,
-   "First Translation": "class",
+   "First Translation": "class, to wait for",
    "Other Translations": "rank, grade, equal to, same as, to wait for, to await, et cetera, and so on, et al. (and other authors), after, as soon as, once"
  },
  {
@@ -732,7 +732,7 @@
    "Pinyin": "kàn",
    "OtherPinyin": "kan4",
    "Level": 1,
-   "First Translation": "to look after",
+   "First Translation": "to look after, to see",
    "Other Translations": "to take care of, to watch, to guard, to see, to look at, to read, to watch, to visit, to call on, to consider, to regard as, to look after, to treat (an illness), to depend on, to feel (that), (after verb) to give it a try, Watch out! (for a danger)"
  },
  {
@@ -748,7 +748,7 @@
    "Pinyin": "péngyǒu",
    "OtherPinyin": "peng2you3",
    "Level": 1,
-   "First Translation": "friend",
+   "First Translation": "friend, CL:個|个[ge4],位[wei4]",
    "Other Translations": "CL:個|个[ge4],位[wei4]"
  },
  {
@@ -756,7 +756,7 @@
    "Pinyin": "dōngxi",
    "OtherPinyin": "dong1xi",
    "Level": 1,
-   "First Translation": "east and west",
+   "First Translation": "east and west, thing, stuff, person, CL:個|个[ge4],件[jian4]",
    "Other Translations": "thing, stuff, person, CL:個|个[ge4],件[jian4]"
  },
  {
@@ -764,7 +764,7 @@
    "Pinyin": "ba",
    "OtherPinyin": "ba5",
    "Level": 1,
-   "First Translation": "bar (loanword) (serving drinks, or providing Internet access etc)",
+   "First Translation": "(modal particle indicating suggestion or surmise), ...right?, ...OK?, ...I presume.",
    "Other Translations": "to puff (on a pipe etc), (onom.) bang, (modal particle indicating suggestion or surmise), ...right?, ...OK?, ...I presume., (onom.) smack!, abbr. for 貼吧|贴吧[tie1 ba1]"
  },
  {
@@ -796,7 +796,7 @@
    "Pinyin": "zuò",
    "OtherPinyin": "zuo4",
    "Level": 1,
-   "First Translation": "to do",
+   "First Translation": "to do, to make",
    "Other Translations": "to make, to produce, to write, to compose, to act as, to engage in, to hold (a party), to be, to become, to function (in some capacity), to serve as, to be used for, to form (a bond or relationship), to pretend, to feign, to act a part, to put on appearance"
  },
  {
@@ -812,7 +812,7 @@
    "Pinyin": "zěnmeyàng",
    "OtherPinyin": "zen3me5yang4",
    "Level": 1,
-   "First Translation": "how?",
+   "First Translation": "how?, how are things?",
    "Other Translations": "how about?, how was it?, how are things?"
  },
  {
@@ -828,7 +828,7 @@
    "Pinyin": "xièxie",
    "OtherPinyin": "xie4xie5",
    "Level": 1,
-   "First Translation": "to thank",
+   "First Translation": "to thank, thanks",
    "Other Translations": "thanks, thank you"
  },
  {
@@ -876,7 +876,7 @@
    "Pinyin": "dào",
    "OtherPinyin": "dao4",
    "Level": 1,
-   "First Translation": "to (a place)",
+   "First Translation": "to (a place), until (a time), up to, to go, to arrive, (verb complement denoting completion or result of an action)",
    "Other Translations": "until (a time), up to, to go, to arrive, (verb complement denoting completion or result of an action)"
  },
  {
@@ -924,7 +924,7 @@
    "Pinyin": "duōshǎo",
    "OtherPinyin": "duo1shao3",
    "Level": 1,
-   "First Translation": "number",
+   "First Translation": "number, how much",
    "Other Translations": "amount, somewhat, how much, how many, which (number), as much as"
  },
  {
@@ -996,7 +996,7 @@
    "Pinyin": "jǐ",
    "OtherPinyin": "ji3",
    "Level": 1,
-   "First Translation": "almost",
+   "First Translation": "almost, how much, how many, several, a few",
    "Other Translations": "how much, how many, several, a few"
  },
  {
