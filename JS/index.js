@@ -4,7 +4,7 @@ let errors = 0;
 const charCount = 135;
 let countdownDuration = 45000;
 let correctCount = 0;
-let highscoreCount = localStorage.getItem("highscore");
+let highscoreCount = sessionStorage.getItem("highscore");
 
 
 
@@ -51,7 +51,7 @@ $(document).ready(() => {
       "elapsedTime": 0,
       "clockwise": true,
       "radius": 107,
-      "progressBarWidth": 14,
+      "progressBarWidth": 15,
       "progressBarOffset": 0,
       "circleBackgroundColor": "#e1f8f6",
       "emptyProgressBarBackgroundColor": "#dddddd",
@@ -68,20 +68,20 @@ $(document).ready(() => {
       $('input[type=text]').css('pointer-events', 'none');
       $('#countdown-canvas').css('opacity', '0');
       if (correctCount > highscoreCount) {
-        localStorage.setItem("highscore", correctCount);
+        sessionStorage.setItem("highscore", correctCount);
         
         
         $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
+        $("#highScore").text(sessionStorage.getItem("highscore"));
       }
-      else if (localStorage.getItem("highscore") === undefined){
+      else if (sessionStorage.getItem("highscore") === undefined){
         $("#currentScore").text(correctCount);
         $("#highScore").text(correctCount);
-        localStorage.setItem("highscore", correctCount);
+        sessionStorage.setItem("highscore", correctCount);
       }
       else{
         $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
+        $("#highScore").text(sessionStorage.getItem("highscore"));
       }
       
     }, countdownDuration);
@@ -97,7 +97,7 @@ $(document).ready(() => {
       "elapsedTime": 0,
       "clockwise": true,
       "radius": 107,
-      "progressBarWidth": 14,
+      "progressBarWidth": 15,
       "progressBarOffset": 0,
       "circleBackgroundColor": "#e1f8f6",
       "emptyProgressBarBackgroundColor": "#dddddd",
@@ -116,20 +116,20 @@ $(document).ready(() => {
       $('input[type=text]').css('pointer-events', 'none');
       
       if (correctCount > highscoreCount) {
-        localStorage.setItem("highscore", correctCount);
+        sessionStorage.setItem("highscore", correctCount);
         
         
         $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
+        $("#highScore").text(sessionStorage.getItem("highscore"));
       }
-      else if (localStorage.getItem("highscore") === undefined){
+      else if (sessionStorage.getItem("highscore") === undefined){
         $("#currentScore").text(correctCount);
         $("#highScore").text(correctCount);
-        localStorage.setItem("highscore", correctCount);
+        sessionStorage.setItem("highscore", correctCount);
       }
       else{
         $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
+        $("#highScore").text(sessionStorage.getItem("highscore"));
       }
     }, countdownDuration);
 
