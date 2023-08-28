@@ -2,7 +2,7 @@ import myJson from '../vocabulary/TOCFL-1.json' assert {type: 'json'};
 
 let errors = 0;
 const charCount = 135;
-let countdownDuration = 45000;
+let countdownDuration = 60000;
 let correctCount = 0;
 let highscoreCount = sessionStorage.getItem("highscore");
 
