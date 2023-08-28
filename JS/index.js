@@ -4,7 +4,7 @@ let errors = 0;
 const charCount = 135;
 let countdownDuration = 60000;
 let correctCount = 0;
-let highscoreCount = sessionStorage.getItem("highscore");
+let highscoreCount = localStorage.getItem("highscore");
 
 
 
@@ -68,20 +68,20 @@ $(document).ready(() => {
       $('input[type=text]').css('pointer-events', 'none');
       $('#countdown-canvas').css('opacity', '0');
       if (correctCount > highscoreCount) {
-        sessionStorage.setItem("highscore", correctCount);
+        localStorage.setItem("highscore", correctCount);
         
         
         $("#currentScore").text(correctCount);
-        $("#highScore").text(sessionStorage.getItem("highscore"));
+        $("#highScore").text(localStorage.getItem("highscore"));
       }
-      else if (sessionStorage.getItem("highscore") === undefined){
+      else if (localStorage.getItem("highscore") === undefined){
         $("#currentScore").text(correctCount);
         $("#highScore").text(correctCount);
-        sessionStorage.setItem("highscore", correctCount);
+        localStorage.setItem("highscore", correctCount);
       }
       else{
         $("#currentScore").text(correctCount);
-        $("#highScore").text(sessionStorage.getItem("highscore"));
+        $("#highScore").text(localStorage.getItem("highscore"));
       }
       
     }, countdownDuration);
@@ -116,20 +116,20 @@ $(document).ready(() => {
       $('input[type=text]').css('pointer-events', 'none');
       
       if (correctCount > highscoreCount) {
-        sessionStorage.setItem("highscore", correctCount);
+        localStorage.setItem("highscore", correctCount);
         
         
         $("#currentScore").text(correctCount);
-        $("#highScore").text(sessionStorage.getItem("highscore"));
+        $("#highScore").text(localStorage.getItem("highscore"));
       }
-      else if (sessionStorage.getItem("highscore") === undefined){
+      else if (localStorage.getItem("highscore") === undefined){
         $("#currentScore").text(correctCount);
         $("#highScore").text(correctCount);
-        sessionStorage.setItem("highscore", correctCount);
+        localStorage.setItem("highscore", correctCount);
       }
       else{
         $("#currentScore").text(correctCount);
-        $("#highScore").text(sessionStorage.getItem("highscore"));
+        $("#highScore").text(localStorage.getItem("highscore"));
       }
     }, countdownDuration);
 
