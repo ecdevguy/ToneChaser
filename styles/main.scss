@@ -12,6 +12,10 @@ $accentCorrect: #EBDDFF;
 $primaryIncorrect: #effbfa;
 $accentIncorrect: #fae7e7;
 
+body {
+  user-select: none;
+}
+
 .corner-button {
   font-family: 'Lato', sans-serif;
   letter-spacing: 0.3rem;
@@ -60,6 +64,87 @@ $accentIncorrect: #fae7e7;
   }
 }
 
+
+
+
+
+
+
+/* CSS */
+.button-89 {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
+}
+
+.modal-container {
+  position: fixed;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 244px;
+  height: 144px;
+  background-color: rgb(225, 244, 251);
+  border: 3px solid #000000e9;
+  box-shadow: 0 10px 4px rgba(0, 0, 0, 0.1);
+  
+  padding: .5rem;
+  z-index: 1000;
+  display: none;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 1.2rem;
+  text-align: center;
+  
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  animation: appear 300ms ease-in 1;
+}
+
+@keyframes appear {
+  0%{
+    opacity: 0;
+    
+  }
+}
+
+
+.highScore {
+  font-weight: bold;
+}
+
+
+
+
 .correct {
   background: rgb(202,226,255);
 }
@@ -92,6 +177,12 @@ $accentIncorrect: #fae7e7;
   font-size: 4rem;
   font-family: 'ThePeakFontBeta_V0_101', 'SentyCreek';
   background-color: $primaryCorrectLighter;
+}
+
+#countdown-canvas {
+  opacity: .3;
+  position: absolute;
+  
 }
 
 .pinyin-textbox input[type=submit] { display: none; }
