@@ -4,7 +4,8 @@ let errors = 0;
 const charCount = 135;
 let countdownDuration = 60000;
 let correctCount = 0;
-let highscoreCount = localStorage.getItem("highscore");
+//let highscoreCount = localStorage.getItem("highscore");
+
 
 
 
@@ -67,22 +68,18 @@ $(document).ready(() => {
       $('.modal-container').css('display', 'flex');
       $('input[type=text]').css('pointer-events', 'none');
       $('#countdown-canvas').css('opacity', '0');
-      if (correctCount > highscoreCount) {
+      if ((correctCount > localStorage.getItem("highscore")) || (localStorage.getItem("highscore") === undefined)) {
         localStorage.setItem("highscore", correctCount);
         
         
         $("#currentScore").text(correctCount);
         $("#highScore").text(localStorage.getItem("highscore"));
       }
-      else if (localStorage.getItem("highscore") === undefined){
-        $("#currentScore").text(correctCount);
-        $("#highScore").text(correctCount);
-        localStorage.setItem("highscore", correctCount);
-      }
-      else{
+      else if (correctCount <= localStorage.getItem("highscore")) {
         $("#currentScore").text(correctCount);
         $("#highScore").text(localStorage.getItem("highscore"));
       }
+      
       
     }, countdownDuration);
   });
@@ -115,19 +112,14 @@ $(document).ready(() => {
       $('.modal-container').css('display', 'flex');
       $('input[type=text]').css('pointer-events', 'none');
       
-      if (correctCount > highscoreCount) {
+      if ((correctCount > localStorage.getItem("highscore")) || (localStorage.getItem("highscore") === undefined)) {
         localStorage.setItem("highscore", correctCount);
         
         
         $("#currentScore").text(correctCount);
         $("#highScore").text(localStorage.getItem("highscore"));
       }
-      else if (localStorage.getItem("highscore") === undefined){
-        $("#currentScore").text(correctCount);
-        $("#highScore").text(correctCount);
-        localStorage.setItem("highscore", correctCount);
-      }
-      else{
+      else if (correctCount <= localStorage.getItem("highscore")) {
         $("#currentScore").text(correctCount);
         $("#highScore").text(localStorage.getItem("highscore"));
       }
@@ -148,7 +140,7 @@ $(document).ready(() => {
         return '#17a2b8'; // blue
       case percentage >= 50 && percentage < 75:
         return '#17a2b8'; // blue
-      case percentage >= 40 && percentage < 50:
+      case percentage >= 20 && percentage < 50:
         return '#17a2b8'; // blue
       default:
         return '#dc3545'; // red
