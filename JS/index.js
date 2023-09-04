@@ -1,13 +1,23 @@
-import myJson from '../vocabulary/TOCFL-1.json' assert {type: 'json'};
+import tocflVocabList from '../vocabulary/TOCFL-1.json' assert {type: 'json'};
 
 let errors = 0;
-const charCount = 135;
-let countdownDuration = 60000;
 let correctCount = 0;
-//let highscoreCount = localStorage.getItem("highscore");
+let countdownDuration = 30000;
+const lvlOneStartIndex = 0;
+const lvlOneEndIndex = 135;
 
-
-
+const pickColorByPercentage = (percentage, time) => {
+  switch (true) {
+    case percentage >= 75:
+      return '#17a2b8'; // blue
+    case percentage >= 50 && percentage < 75:
+      return '#17a2b8'; // blue
+    case percentage >= 30 && percentage < 50:
+      return '#17a2b8'; // blue
+    default:
+      return '#dc3545'; // red
+  }
+}
 
 function adjustFontSize() {
   $('#chinese-character').each(function() {
@@ -27,68 +37,125 @@ function adjustFontSize() {
   });
 }
 
-const pickColorByPercentage = (percentage, time) => {
-  switch (true) {
-    case percentage >= 75:
-      return '#28a745'; // green
-    case percentage >= 50 && percentage < 75:
-      return '#17a2b8'; // blue
-    case percentage >= 25 && percentage < 50:
-      return '#ffc107'; // orange
-    default:
-      return '#dc3545'; // red
+function startGame() {
+  setNewCharacter(lvlOneStartIndex, lvlOneEndIndex);
+  $('.corner-button').css('display', 'none');
+  $('.word').css('display', 'inline-block');
+  $('input[type=text]').css('pointer-events', 'all');
+  $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
+  $('#countdown-canvas').css('opacity', '.3');
+}
+
+function resetContinue() {
+  setNewCharacter(lvlOneStartIndex, lvlOneEndIndex);
+  setCorrectHighlights();
+  hideScoreModal();
+  removeInputText();
+  $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
+  correctCount = 0;
+}
+
+function showScoreModal() {
+  $('.modal-container').css('display', 'flex');
+      $('input[type=text]').css('pointer-events', 'none');
+      $('#countdown-canvas').css('opacity', '0');
+}
+
+function hideScoreModal() {
+  $('.modal-container').css('display', 'none');
+  $('input[type=text]').css('pointer-events', 'all');
+  $('#countdown-canvas').css('opacity', '.3');
+}
+
+function assignLocalScores() {
+  if ((correctCount > localStorage.getItem("highscore")) || (localStorage.getItem("highscore") === undefined)) {
+    localStorage.setItem("highscore", correctCount);
+    
+    
+    $("#currentScore").text(correctCount);
+    $("#highScore").text(localStorage.getItem("highscore"));
+  }
+  else if (correctCount <= localStorage.getItem("highscore")) {
+    $("#currentScore").text(correctCount);
+    $("#highScore").text(localStorage.getItem("highscore"));
+  }
+}
+
+function randomWordIndex(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function setNewCharacter(startIndex, endIndex) {
+  let x = randomWordIndex(startIndex, endIndex);
+  $("#chinese-character").text(tocflVocabList[x].Word);
+  $("#chinese-character").attr("pinyin", tocflVocabList[x].OtherPinyin);
+  $("#chinese-character").attr("character", tocflVocabList[x].Word);
+  $("#definition").text(tocflVocabList[x]['First Translation']);
+}
+
+function removeInputText() {
+  $("#pinyin-character").val("");
+}
+
+function removeInputPlaceholder () {
+  $("#pinyin-character").attr("placeholder", "");
+}
+
+function setCorrectHighlights() {
+  $('.tooltip').css('border-color', '#73bdc293');
+  $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
+}
+
+function setIncorrectHighlights() {
+  $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
+  $('.tooltip').css('border-color', '#c2787359');
+}
+
+function showHint() {
+  $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
+}
+
+function correctAnswer() {
+  setNewCharacter(lvlOneStartIndex, lvlOneEndIndex);
+  removeInputText();
+  removeInputPlaceholder();
+  setCorrectHighlights();
+  correctCount++;
+  let errors = 0;
+}
+
+function incorrectAnswer() {
+  removeInputText();
+  setIncorrectHighlights();
+  $('#chinese-character').effect('shake', 300);
+  errors++;
+}
+
+function checkInput(e) {
+  if (e.which === 13 && ($("#chinese-character").attr("pinyin") === $("#pinyin-character").val())) { 
+    correctAnswer();
+}
+  else if (e.which === 13 && ($("#chinese-character").attr("character") !== $("#pinyin-character").val()) && errors < 7) {
+    incorrectAnswer();
+  }
+  else if (e.which === 36 && ($("#chinese-character").attr("pinyin") === $("#pinyin-character").val())) {  
+    correctAnswer();
+  }
+  else if (e.which === 36 && ($("#chinese-character").attr("character") !== $("#pinyin-character").val()) && errors < 7) {
+    incorrectAnswer();
+  }
+  else if (errors == 7){
+    removeInputText();
+    showHint();
+    errors = 4;
   }
 }
 
 $(document).ready(() => {
   
-  $('#continue-btn').on("click", () => {
-    $('.modal-container').css('display', 'none');
-    $('input[type=text]').css('pointer-events', 'all');
-    $('#countdown-canvas').css('opacity', '.3');
-    correctCount = 0;
-    new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
-      "duration": countdownDuration,
-      "elapsedTime": 0,
-      "clockwise": true,
-      "radius": 107,
-      "progressBarWidth": 15,
-      "progressBarOffset": 0,
-      "circleBackgroundColor": "#e1f8f6",
-      "emptyProgressBarBackgroundColor": "#dddddd",
-      "filledProgressBarBackgroundColor": "#00bfeb",
-      "showCaption": false,
-      "captionColor": "#343a40",
-      "captionFont": "20px sans-serif",
-      "captionText": " ",
-      filledProgressBarBackgroundColor: pickColorByPercentage,
-      captionColor: pickColorByPercentage
-    }).start();
-    setTimeout(function() {
-      $('.modal-container').css('display', 'flex');
-      $('input[type=text]').css('pointer-events', 'none');
-      $('#countdown-canvas').css('opacity', '0');
-      if ((correctCount > localStorage.getItem("highscore")) || (localStorage.getItem("highscore") === undefined)) {
-        localStorage.setItem("highscore", correctCount);
-        
-        
-        $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
-      }
-      else if (correctCount <= localStorage.getItem("highscore")) {
-        $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
-      }
-      
-      
-    }, countdownDuration);
-  });
-  
+  adjustFontSize();
   $('#start-button').on("click", () => {
-    $('.corner-button').css('display', 'none');
-    $('.word').css('display', 'inline-block');
-    $('input[type=text]').css('pointer-events', 'all');
-    $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
+    startGame();
     new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
       "duration": countdownDuration,
       "elapsedTime": 0,
@@ -106,118 +173,40 @@ $(document).ready(() => {
       filledProgressBarBackgroundColor: pickColorByPercentage,
       captionColor: pickColorByPercentage
     }).start();
-    $('#countdown-canvas').css('opacity', '.3');
-
     setTimeout(function() {
-      $('.modal-container').css('display', 'flex');
-      $('input[type=text]').css('pointer-events', 'none');
-      
-      if ((correctCount > localStorage.getItem("highscore")) || (localStorage.getItem("highscore") === undefined)) {
-        localStorage.setItem("highscore", correctCount);
-        
-        
-        $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
-      }
-      else if (correctCount <= localStorage.getItem("highscore")) {
-        $("#currentScore").text(correctCount);
-        $("#highScore").text(localStorage.getItem("highscore"));
-      }
-    }, countdownDuration);
-
-    
-    
+      assignLocalScores();
+      showScoreModal();
+    }, countdownDuration); 
   });
-  let x = Math.floor((Math.random() * charCount));
-  $("#chinese-character").text(myJson[x].Word);
-  $("#chinese-character").attr("pinyin", myJson[x].OtherPinyin);
-  $("#chinese-character").attr("character", myJson[x].Word);
-  $("#definition").text(myJson[x]['First Translation']);
-
-  const pickColorByPercentage = (percentage, time) => {
-    switch (true) {
-      case percentage >= 75:
-        return '#17a2b8'; // blue
-      case percentage >= 50 && percentage < 75:
-        return '#17a2b8'; // blue
-      case percentage >= 20 && percentage < 50:
-        return '#17a2b8'; // blue
-      default:
-        return '#dc3545'; // red
-    }
-  }
-
-
-  
-
-adjustFontSize();
-  
-
+  $('#continue-btn').on("click", () => {
+    resetContinue();
+    new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
+      "duration": countdownDuration,
+      "elapsedTime": 0,
+      "clockwise": true,
+      "radius": 107,
+      "progressBarWidth": 15,
+      "progressBarOffset": 0,
+      "circleBackgroundColor": "#e1f8f6",
+      "emptyProgressBarBackgroundColor": "#dddddd",
+      "filledProgressBarBackgroundColor": "#00bfeb",
+      "showCaption": false,
+      "captionColor": "#343a40",
+      "captionFont": "20px sans-serif",
+      "captionText": " ",
+      filledProgressBarBackgroundColor: pickColorByPercentage,
+      captionColor: pickColorByPercentage
+    }).start();
+    setTimeout(function() {
+      assignLocalScores();
+      showScoreModal();
+    }, countdownDuration);
+  });
   $('.pinyin-textbox').on('submit', () => {
       return false;
   });
+  $('.pinyin-textbox').keypress((e) => {
+    checkInput(e);
+    adjustFontSize();
+    })
 });
-$('.pinyin-textbox').keypress((e) => {
-  
-  if (e.which === 13 && ($("#chinese-character").attr("pinyin") == $("#pinyin-character").val())) {
-      
-    let x = Math.floor((Math.random() * charCount));
-    $("#chinese-character").text(myJson[x].Word);
-    $("#chinese-character").attr("pinyin", myJson[x].OtherPinyin)
-    $("#chinese-character").attr("character", myJson[x].Word)
-    $("#pinyin-character").val("");
-    $("#pinyin-character").attr("placeholder", "");
-    correctCount++;
-    //$("#body").attr("class", "correct");
-    $("#definition").text(myJson[x]['First Translation']);
-    //$('.character').css('background-color', '#dffcfa');
-    $('.tooltip').css('border-color', '#73bdc293');
-    $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
-    //adjustFontSize();
-    let errors = 0;
-}
-else if (e.which === 13 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
-  $("#pinyin-character").val("");
-  $("#body").attr("class", "incorrect");
-  //$('.character').css('background-color', '#f8eeee');
-  $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
-  $('.tooltip').css('border-color', '#c2787359');
-  $('#chinese-character').effect('shake', 300);
-  //adjustFontSize();
-  errors++;
-}
-else if (e.which === 36 && ($("#chinese-character").attr("pinyin") == $("#pinyin-character").val())) {
-      
-    let x = Math.floor((Math.random() * charCount));
-    $("#chinese-character").text(myJson[x].Word);
-    $("#chinese-character").attr("pinyin", myJson[x].OtherPinyin)
-    $("#chinese-character").attr("character", myJson[x].Word)
-    $("#pinyin-character").val("");
-    $("#pinyin-character").attr("placeholder", "");
-    correctCount++;
-    //$("#body").attr("class", "correct");
-    $("#definition").text(myJson[x]['First Translation']);
-    //$('.character').css('background-color', '#dffcfa');
-    $('.tooltip').css('border-color', '#73bdc293');
-    $('input[type=text]').css('border-bottom', '.2em solid #73bdc293');
-    //adjustFontSize();
-    let errors = 0;
-}
-else if (e.which === 36 && ($("#chinese-character").attr("character") != $("#pinyin-character").val()) && errors < 7) {
-  $("#pinyin-character").val("");
-  $("#body").attr("class", "incorrect");
-  //$('.character').css('background-color', '#f8eeee');
-  $('input[type=text]').css('border-bottom', '.2em solid #c2787359');
-  $('.tooltip').css('border-color', '#c2787359');
-  //adjustFontSize();
-  errors++;
-}
-else if (errors == 7){
-  $("#pinyin-character").val("");
-  $("#pinyin-character").attr("placeholder", $("#chinese-character").attr("pinyin"));
-  //adjustFontSize();
-  errors = 4;
-}
-adjustFontSize();
-})
-
